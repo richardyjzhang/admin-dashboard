@@ -43,22 +43,23 @@ const DashboardModel: DashboardType = {
   },
   effects: {
     *fetchSystemInfo({ payload }, { call, put }) {
-      const systemInfo: SystemInfoData = yield call(querySystemInfo, payload);
+      const systemInfoData: SystemInfoData = yield call(querySystemInfo, payload);
       yield put({
         type: 'getSystemInfo',
-        payload: { systemInfo },
+        payload: { systemInfoData },
       });
     },
     *fetchServiceInfo({ payload }, { call, put }) {
-      const serviceInfos: ServiceInfoData[] = yield call(queryServiceInfo, payload);
+      const serviceInfoDatas: ServiceInfoData[] = yield call(queryServiceInfo, payload);
       yield put({
         type: 'getServiceInfo',
-        payload: { serviceInfos },
+        payload: { serviceInfoDatas },
       });
     },
   },
   reducers: {
     getSystemInfo(state, action) {
+      console.log(action);
       return {
         ...state,
         ...action.payload,

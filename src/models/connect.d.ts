@@ -5,6 +5,7 @@ import { GlobalModelState } from './global';
 import { DefaultSettings as SettingModelState } from '../../config/defaultSettings';
 import { UserModelState } from './user';
 import { LoginModelType } from './login';
+import { DashboardState } from '@/pages/dashboard/models/dashboardData';
 
 export { GlobalModelState, SettingModelState, UserModelState };
 
@@ -26,6 +27,7 @@ export interface ConnectState {
   settings: SettingModelState;
   user: UserModelState;
   login: LoginModelType;
+  dashboardModel: DashboardState;
 }
 
 export interface Route extends MenuDataItem {

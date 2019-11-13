@@ -59,7 +59,6 @@ const DashboardModel: DashboardType = {
   },
   reducers: {
     getSystemInfo(state, action) {
-      console.log(action);
       return {
         ...state,
         ...action.payload,

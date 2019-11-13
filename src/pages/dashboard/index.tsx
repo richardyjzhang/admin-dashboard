@@ -1,8 +1,11 @@
 import React, { FC, useEffect } from 'react';
+import { Card, Empty } from 'antd';
 import { connect } from 'dva';
 import { ConnectState } from '@/models/connect';
 
 import { SystemInfoData, ServiceInfoData } from './models/data';
+
+import PercentCircle from '@/components/Chart/PercentCircle';
 
 interface DashboardPageType {
   systemInfoData: SystemInfoData;
@@ -21,8 +24,13 @@ const DashboardPage: FC<DashboardPageType> = props => {
 
   return (
     <div>
-      <div>CPU:{systemInfoData.CPUInfo.used}</div>
-      <div>内存:{systemInfoData.MemoryInfo.used}</div>
+      <Card title="系统信息">
+        {systemInfoData.CPUInfo.used > 0 ? (
+          <PercentCircle percent={systemInfoData.CPUInfo.used} label="CPU占用" />
+        ) : (
+          <Empty />
+        )}
+      </Card>
     </div>
   );
 };
